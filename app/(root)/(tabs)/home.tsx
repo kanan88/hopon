@@ -1,4 +1,5 @@
 import { useUser } from "@clerk/clerk-expo";
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import GoogleTextInput from "@/components/GoogleTextInput";
@@ -131,8 +132,8 @@ export default function Page() {
 
   const [hasPermissions, setHasPermissions] = useState(false);
 
-  const handleSignOut = async () => {};
-  const handleDestinationPress = async () => {};
+  const handleSignOut = () => {};
+  const handleDestinationPress = () => {};
 
   useEffect(() => {
     const requestLocation = async () => {
@@ -200,7 +201,7 @@ export default function Page() {
                 onPress={handleSignOut}
                 className="justify-center items-center w-10 h-10 rounded-full bg-white"
               >
-                <Image source={icons.out} className="w-4 h-4" />
+                <Image source={icons.out} className="w-4  h-4" />
               </TouchableOpacity>
             </View>
 

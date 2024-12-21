@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
+import { View } from "react-native";
+import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 import { icons } from "@/constants";
 import { calculateRegion, generateMarkersFromData } from "@/lib/map";
 import { useDriverStore, useLocationStore } from "@/store";
 import { MarkerData } from "@/types/type";
-import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
-import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 
 const drivers = [
   {
