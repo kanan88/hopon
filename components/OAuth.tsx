@@ -1,4 +1,4 @@
-import { Alert, Image, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import CustomButton from "./CustomButton";
 import { icons } from "@/constants";
 import { useOAuth } from "@clerk/clerk-expo";
@@ -13,12 +13,9 @@ const OAuth = () => {
     try {
       const result = await googleOAuth(startOAuthFlow);
 
-      if (result.code === "session_exists") {
-        Alert.alert("Success", "Session Exists. Redirecting to home page");
+      if (result.code === "session_exists" || result.code === "success") {
         router.push("/(root)/(tabs)/home");
       }
-
-      Alert.alert(result.success ? "Success" : "Error", result.message);
     } catch (err) {
       console.error(JSON.stringify(err, null, 2));
     }
