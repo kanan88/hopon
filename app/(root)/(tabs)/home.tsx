@@ -1,4 +1,4 @@
-import { useUser } from "@clerk/clerk-expo";
+import { useAuth, useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
@@ -23,6 +23,7 @@ import { Ride } from "@/types/type";
 export default function Page() {
   const { setUserLocation, setDestinationLocation } = useLocationStore();
   const { user } = useUser();
+  const { signOut } = useAuth();
 
   const [hasPermissions, setHasPermissions] = useState(false);
 
@@ -32,7 +33,11 @@ export default function Page() {
     error,
   } = useFetch<Ride[]>(`/(api)/ride/${user?.id}`);
 
-  const handleSignOut = () => {};
+  const handleSignOut = () => {
+    signOut();
+    router.replace("/(auth)/sign-in");
+  };
+
   const handleDestinationPress = (location: {
     latitude: number;
     longitude: number;
