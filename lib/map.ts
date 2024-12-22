@@ -19,6 +19,7 @@ export const generateMarkersFromData = ({
       latitude: userLatitude + latOffset,
       longitude: userLongitude + lngOffset,
       title: `${driver.first_name} ${driver.last_name}`,
+      id: driver.driver_id,
       ...driver,
     };
   });
