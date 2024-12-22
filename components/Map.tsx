@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Text, View } from "react-native";
 import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
+import MapViewDirections from "react-native-maps-directions";
 import { icons } from "@/constants";
 import {
   calculateDriverTimes,
@@ -85,7 +86,7 @@ const Map = () => {
       mapType="mutedStandard"
       showsPointsOfInterest={false}
       initialRegion={region}
-      showsUserLocation={true}
+      //showsUserLocation={true}
       userInterfaceStyle="light"
     >
       <View className="min-w-full h-full rounded-2xl">
@@ -102,7 +103,7 @@ const Map = () => {
             }
           />
         ))}
-        {/* {destinationLatitude && destinationLongitude && (
+        {destinationLatitude && destinationLongitude && (
           <>
             <Marker
               key="destination"
@@ -122,12 +123,12 @@ const Map = () => {
                 latitude: destinationLatitude,
                 longitude: destinationLongitude,
               }}
-              apikey={directionsAPI!}
+              apikey={process.env.EXPO_PUBLIC_GOOGLE_API_KEY!}
               strokeColor="#0286FF"
-              strokeWidth={2}
+              strokeWidth={3}
             />
           </>
-        )} */}
+        )}
       </View>
     </MapView>
   );
